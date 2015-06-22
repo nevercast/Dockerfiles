@@ -5,7 +5,7 @@ MAINTAINER Josh Lloyd <j.nevercast@gmail.com>
 ADD https://deb.nodesource.com/setup_0.12 /tmp/s12
 RUN bash /tmp/s12 && rm /tmp/s12
 # Install Other dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
 	g++ \
 	gcc \
 	git \
