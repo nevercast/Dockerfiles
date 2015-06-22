@@ -3,6 +3,8 @@ from sys import argv as args
 from os import listdir as ls
 from os.path import join, isfile
 from subprocess import call
+from time import time
+begin = time()
 # Select developer name
 devName = (len(args) > 1 and args[1]) or 'nevercast'
 # Iterate one depth of folders looking for Dockerfiles
@@ -13,3 +15,4 @@ for file in ls('.'):
 		imageName = '{}/{}:latest'.format(devName, file)
 		print 'Building ' + imageName
 		call(['docker','build','-t',imageName, file])
+print 'Completed build in', (time() - begin), 'seconds'
