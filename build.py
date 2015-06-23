@@ -16,9 +16,7 @@ developer_name = len(argv) > 1 and argv[1] or 'nevercast'
 # Iterate one depth of folders looking for Dockerfiles
 
 for file in ls('.'):
-    if file[0] == '.' or isfile(file):
-        continue
-    if isfile(join(file, 'Dockerfile')):
+    if file[0] != '.' and isfile(join(file, 'Dockerfile')):
         image_name = '{}/{}:latest'.format(developer_name, file)
         print('Building', image_name)
         call(['docker', 'build', '-t', image_name, file])
